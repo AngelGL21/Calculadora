@@ -1,0 +1,172 @@
+body{
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #021024;
+    color: #c1e8ff;
+}
+.menu{
+    width: 650px;
+    border: none;
+    display: grid;
+    justify-items: center;
+    padding: 50px 60px;
+    background-color:  #052656;
+}
+.menu input{
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    border: 2px solid #5482b3;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #000000;
+    padding: 10px 20px 10px 10px;
+}
+
+.menu ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	display:flex;
+	align-items: stretch;
+}
+li {
+	background-color: #5483b3;
+	margin-right: 1em;
+    padding: 10px;
+	flex-grow: 1;
+    border-radius: 0.5em;
+}
+
+.contenedor_operacion1{
+    width: 650px;
+    border-top: 2px solid white;
+    background-color: #052656;
+    display: grid;
+    grid-template-columns:  repeat(2, 1fr);
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+    padding: 50px 60px;
+    text-align: center;
+}
+
+.contenedor_operacion1 input{
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    border: 2px solid #5482b3;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #000000;
+    padding: 10px 20px 10px 10px;
+}
+.contenedor_operacion1 button{
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    height: 45px;
+    background: #03dcd5;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(3, 245, 104, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contenedor_operacion1 button:hover{
+    background: #017986;
+    color: azure;
+}
+
+.contenedor_operacion2{
+    width: 650px;
+    border-top: 2px solid white;
+    background-color: #052656;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 50px 60px;
+    text-align: center;
+}
+
+.contenedor_operacion2 input{
+    width: 50%;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    border: 2px solid #5482b3;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #000000;
+    padding: 10px 20px 10px 10px;
+}
+.contenedor_operacion2 button{
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    height: 45px;
+    background: #03dcd5;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(3, 245, 104, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contenedor_operacion2 button:hover{
+    background: #017986;
+    color: azure;
+}
+
+.contenedor_operacion3{
+    width: 650px;
+    border-top: 2px solid white;
+    background-color: #052656;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 50px 60px;
+    text-align: center;
+}
+
+.contenedor_operacion3 textarea, input{
+    width: 60%;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border: 2px solid #5482b3;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #000000;
+    padding: 10px 20px 10px 10px;
+}
+.contenedor_operacion3 button{
+    width: 50%;
+    padding: 5px;
+    margin: 5px;
+    height: 45px;
+    background: #03dcd5;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(3, 245, 104, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contenedor_operacion3 button:hover{
+    background: #017986;
+    color: azure;
+}

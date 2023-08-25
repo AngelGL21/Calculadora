@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.min.js"></script>
+    <link rel="stylesheet" href="estiloOperaciones.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <title>Calculadora</title>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1>Bienvenido</h1>
+            <p>¿Qué tipo de operacion desea realizar?</p>
+            <ul>
+                <li>1. Operaciones básicas</li>
+                <li>2. Operaciones avanzada</li>
+                <li>3. Ordenar cadena</li>
+            </ul>
+            <p>Ingresa el número de la opción:</p>
+            <input type="number" id="opcion" placeholder="Opción" oninput="mostrarResultado()">
+            <br>
+            <div id="resultado"></div>
+        </div>
+        <div class="contenedor_operacion1">
+            <h3>Operaciones básicas</h3>
+            <input type="number" id="num1" placeholder="Número 1">
+            <input type="number" id="num2" placeholder="Número 2">
+            <button onclick="suma()">Sumar</button>
+            <button onclick="resta()">Restar</button>
+            <button onclick="multipliacion()">multiplicar</button>
+            <button onclick="division()">Dividir</button>
+            <p id="resul"></p>
+        </div>
+
+        <div class="contenedor_operacion2">
+            <h3>Operaciones avanzada</h3>
+            <label for="funcion"><em>Ejemplo: F(x)=-2x^2-5</em></label><input type="text" id="expresion" placeholder="Función matemática">
+            <button onclick="calcularLimite()">Calcular límite</button>
+            <button onclick="calcularDerivada()">Calcular derivada</button>
+            <p id="result"></p>
+            
+        </div>
+
+        <div class="contenedor_operacion3">
+            <h3>Ordenar cadena</h3>
+            <textarea id="textoEntrada" placeholder="Introduce una cadena de caracteres"></textarea>
+            <button onclick="ordenarIzquierdaDerecha()">Ordenar de izquierda a derecha</button>
+            <button onclick="ordenarDerechaIzquierda()">Ordenar de derecha a izquierda</button>
+            <input type="text" id="eliminarcadena" placeholder="Introdusca caracteres a eliminar">
+            <button onclick="quitarElemento()">Quitar elemento</button>
+            <button onclick="revertirQuitarElemento()">Revertir eliminación</button>
+            <p id="resulta"></p>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll(".contenedor_operacion1, .contenedor_operacion2, .contenedor_operacion3").forEach(function(el) {
+                el.style.display = "none";
+            });
+
+        function mostrarResultado() {
+            var opcion = parseInt(document.getElementById("opcion").value);
+            var resultado = "";
+
+            switch (opcion) {
+                case 1:
+                    //resultado = "Operaciones básicas: Suma, Resta, Multiplicación, División.";
+                    document.querySelector(".contenedor_operacion1").style.display = "block";
+                    document.querySelector(".contenedor_operacion2").style.display = "none";
+                    document.querySelector(".contenedor_operacion3").style.display = "none";
+                    break;
+                case 2:
+                    //resultado = "Operaciones avanzadas: Límites y derivadas";
+                    document.querySelector(".contenedor_operacion1").style.display = "none";
+                    document.querySelector(".contenedor_operacion2").style.display = "block";
+                    document.querySelector(".contenedor_operacion3").style.display = "none";
+                    break;
+                case 3:
+                    //resultado = "Ordenar cadenas: Iquierda y derecha";
+                    document.querySelector(".contenedor_operacion1").style.display = "none";
+                    document.querySelector(".contenedor_operacion2").style.display = "none";
+                    document.querySelector(".contenedor_operacion3").style.display = "block";
+                    break;
+                default:
+                    resultado = alert = "Opción no válida. Por favor, elige entre 1, 2 o 3.";
+                    document.querySelector(".contenedor_operacion1").style.display = "none";
+                    document.querySelector(".contenedor_operacion2").style.display = "none";
+                    document.querySelector(".contenedor_operacion3").style.display = "none";
+            }
+
+            document.getElementById("resultado").textContent = resultado;
+        }
+
+        function suma(){
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("resul").textContent = `Resultado: ${num1 + num2}`;
+        }
+
+        function resta(){
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("resul").textContent = `Resultado: ${num1 - num2}`;
+        }
+
+        function multipliacion(){
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("resul").textContent = `Resultado: ${num1 * num2}`;
+        }
+
+        function division(){
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            if (num2 !== 0) {
+            document.getElementById("resul").textContent = `Resultado: ${num1 / num2}`;
+            } else {
+            document.getElementById("resul").textContent = "No se puede dividir por cero";
+            }
+        }
+
+        function calcularLimite(){
+            const expression = document.getElementById("expresion").value;
+            const xValue = 0;
+            const result = math.evaluate(expression, { x: xValue });
+            document.getElementById("result").textContent = `Lim -> x = ${xValue}: ${result}`;
+        }
+
+        function calcularDerivada() {
+            const expression = document.getElementById("expresion").value;
+            const diffExpression = math.derivative(expression, 'x').toString();
+            document.getElementById("result").textContent = `d/dx: ${diffExpression}`;
+        }
+
+        function ordenar(cadena) {
+            let chars = cadena.split('');
+            let len = chars.length;
+
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = i + 1; j < len; j++) {
+                    let temp = chars[i];
+                    chars[i] = chars[j];
+                    chars[j] = temp;
+                }
+            }
+
+            return chars.join('');
+        }
+
+        function ordenarIzquierdaDerecha() {
+            let entrada = document.getElementById("textoEntrada").value;
+            let ordenada = ordenar(entrada).split('').reverse().join('');
+            document.getElementById("resulta").textContent = "Ordenado Izquierda a derecha: " + ordenada;
+        }
+
+        function ordenarDerechaIzquierda() {
+            let entrada = document.getElementById("textoEntrada").value;
+            let ordenada = ordenar(entrada);
+            document.getElementById("resulta").textContent = "Ordenado de Derecha a izquierda: " + ordenada;
+        }
+
+        function quitarElemento() {
+            let entrada = document.getElementById("textoEntrada").value;
+            let elemento = document.getElementById("eliminarcadena").value;
+            let sinElemento = entrada.replace(new RegExp(elemento, 'g'), '');
+            document.getElementById("resulta").textContent = "Cadena: " + sinElemento;
+            limpiar();
+        }
+
+        function revertirQuitarElemento() {
+            let original = document.getElementById("textoEntrada").value;
+            let agregado = document.getElementById("eliminarcadena").value;
+            let revertida = original + agregado;
+            document.getElementById("resulta").textContent = "Cadena restaurada: " + revertida;
+        }
+        
+        function limpiar() {
+            document.getElementById("eliminarcadena").value = "";
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("opcion").value = "";
+            document.getElementById("expresion").value = "";
+        }
+    </script>
+</body>
+</html>
